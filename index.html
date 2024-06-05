@@ -62,7 +62,34 @@ Author: Scott Henshaw
             that the basic HTML gets loaded and you have something to start
             debugging if any of your code fails.
         -->
-        <script type="module" src='./index.js'></script>
+        <!-- <script type="module" src='./index.js'></script> -->
+        <script>
+            class Singleton {
+                constructor() {
+                    if (Singleton.instance) {
+                        return Singleton.instance;
+                    }
+                    this.data = [];
+                    Singleton.instance = this;
+                }
+
+                addData(item) {
+                    this.data.push(item);
+                }
+            
+                getData() {
+                    return this.data;
+                }
+            }
+
+            const instance1 = new Singleton();
+            const instance2 = new Singleton();
+
+            instance1.addData('hamster1');
+
+            console.log(instance2.getData());
+        </script>
+        
     </body>
 
 </html>
