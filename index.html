@@ -71,69 +71,8 @@ Author: Scott Henshaw
             that the basic HTML gets loaded and you have something to start
             debugging if any of your code fails.
         -->
-        <!-- <script type="module" src='./index.js'></script> -->
-        <script>
-
-            // creational singleton pattern example
-            /* class Singleton {
-                constructor() {
-                    if (Singleton.instance) {
-                        return Singleton.instance;
-                    }
-                    this.data = [];
-                    Singleton.instance = this;
-                }
-
-                addData(item) {
-                    this.data.push(item);
-                }
-            
-                getData() {
-                    return this.data;
-                }
-            }
-
-            const instance1 = new Singleton();
-            const instance2 = new Singleton();
-
-            instance1.addData('hamster1');
-
-            console.log(instance2.getData()); */
-            
-            // structural decorator design pattern example
-            class Coffee {
-                cost() {
-                    return 5;
-                }
-            }
-
-            class MilkDecorator {
-                constructor(coffee) {
-                    this.coffee = coffee;
-                }
-
-                cost() {
-                    return this.coffee.cost() + 1;
-                }
-            }
-
-            class SugarDecorator {
-                constructor(coffee) {
-                    this.coffee = coffee;
-                }
-
-                cost() {
-                    return this.coffee.cost() + 0.5;
-                }
-            }
-
-            let myCoffee = new Coffee();
-            myCoffee = new MilkDecorator(myCoffee);
-            myCoffee = new SugarDecorator(myCoffee);
-
-            console.log(myCoffee.cost());
-
-        </script>
+        <script type="module" src='./index.js'></script> 
+        <script type="module" src='./scripts/lesson5.js'></script>
         
     </body>
 

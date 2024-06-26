@@ -1,7 +1,9 @@
 import express from 'express';
 const app = express();
 const port = 3000;
+const __dirname = import.meta.dirname;
 
+app.use('/', express.static(__dirname, { index: 'index.html'}));
 app.use(express.json());
 
 let todos = [
@@ -12,6 +14,7 @@ let todos = [
 // GET all todos
 app.get('/todos', (req, res) => {
     res.json(todos);
+    console.log('server hit');
 });
 
 // GET a todo by ID
@@ -19,7 +22,7 @@ app.get('/todos/:id', (req, res) => {
     const todoId = parseInt(req.params.id);
     const todo = todos.find(t => t.id === todoId);
     if (todo) {
-        res.json(todo);
+        res.json(todo);    
     } else {
         res.status(404).json({ message: 'Todo not found'});
     }
@@ -27,6 +30,7 @@ app.get('/todos/:id', (req, res) => {
 
 // POST a new todo
 app.post('/todos', (req, res) => {
+    console.log('post hit!');
     const newTodo = {
         id: todos.length + 1,
         title: req.body.title,
@@ -63,5 +67,5 @@ app.delete('/todos/:id', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:$(port)`);
+    console.log(`Server running at http://localhost:${port}`);
 });
