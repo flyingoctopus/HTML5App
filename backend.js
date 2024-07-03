@@ -3,8 +3,8 @@ const app = express();
 const port = 3000;
 const __dirname = import.meta.dirname;
 
-app.use('/', express.static(__dirname, { index: 'index.html'}));
 app.use(express.json());
+app.use('/', express.static(__dirname, { index: 'index.html'}));
 
 let todos = [
     {id: 1, title: 'Learn node', completed: false},
