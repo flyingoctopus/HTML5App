@@ -22,9 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
 function fetchTodos() {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', apiUrl, true);
-    xhr.onload = function () {
-        console.log('fetchtodos onload called');
-        if(xhr.status != 404) {
+    xhr.onload = function() {
+        if (xhr.status === 200) {
             const todos = JSON.parse(xhr.responseText);
             const todosDiv = document.getElementById('todos');
             todosDiv.innerHTML = '';
@@ -36,13 +35,13 @@ function fetchTodos() {
                     <p class="${todo.completed ? 'completed' : ''}"><strong>Title:</strong> ${todo.title}</p>
                     <p class="${todo.completed ? 'completed' : ''}"><strong>Completed:</strong> ${todo.completed}</p>
                     <button onclick="toggleCompleteAJAX(${todo.id})">${todo.completed ? 'Mark Incomplete' : 'Mark Complete'}</button>
-                    <button onclick="deleteTODOAJAX(${todo.id})">Delete</button>
+                    <button onclick="deleteTodoAJAX(${todo.id})">Delete</button>
                 `;
                 todosDiv.appendChild(todoDiv);
-
             });
         }
     };
+    xhr.send();
 }
 
 function addTodoAJAX(title) {
@@ -51,7 +50,7 @@ function addTodoAJAX(title) {
     xhr.open('POST', apiUrl, true);
     xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
     xhr.onload = function () {
-        if(xhr.status === 201 || 200) {
+        if(xhr.status === 201) {
             console.log('TODO added:', JSON.parse(xhr.responseText));
             fetchTodos();
         }
@@ -79,9 +78,16 @@ function toggleCompleteAJAX(id) {
 }
 
 function deleteTodoAJAX(id) {
-
+    const xhr = new XMLHttpRequest();
+    xhr.open('DELETE', `${apiUrl}/${id}`, true);
+    xhr.onload = function() {
+        if (xhr.status === 204) {
+            console.log('Todo deleted');
+            fetchTodos();
+        }
+    };
+    xhr.send();
 }
-
 
 export default class App {
 
