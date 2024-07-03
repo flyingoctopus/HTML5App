@@ -32,7 +32,7 @@ Author: Scott Henshaw
 
         <header class="column-full row-head debug">
             <!-- Header -->
-            <h2>TITLE</h2>
+            <h2>Todo List</h2>
         </header>
 
         <nav class="column-full row-nav container debug">
@@ -45,18 +45,15 @@ Author: Scott Henshaw
 
         <main class="column-main row-main debug">
             <!-- The Main Content -->
-             <!-- create content here -->
-             <!--Name, email-->
-              <form id="myForm">
-                <label for="userName">Name:</label> 
-                <input type="text" id="'userName'" name="name" placeholder="Name">
-                <label for="userEmail">Email:</label> 
-                <input type="email" id="userEmail" name="email" placeholder="Email"> 
-                <button id="submit">Submit</button>
-              </form>
-                <br />
-              <button id="fetchDataButton">Fetching</button>
-              <div id="dataDisplay"></div>
+            <!-- create content here -->
+            <div id="todos"></div>
+
+            <h3>Add Todos</h3>
+            <form id="addTodoForm">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+                <button type="submit">Add todo</button>
+            </form>
         </main>
 
         <section class="column-main row-tail debug">
@@ -65,7 +62,7 @@ Author: Scott Henshaw
 
         <footer class="column-full row-foot debug">
             <!-- The Footer -->
-            Copyright &copy 2022 [Your Name]
+            Copyright &copy 2024 [Your Name]
         </footer>
 
         <!-- Scripts section (JS) -->
@@ -74,6 +71,7 @@ Author: Scott Henshaw
             that the basic HTML gets loaded and you have something to start
             debugging if any of your code fails.
         -->
+<<<<<<< HEAD
         <!-- <script type="module" src='./index.js'></script> -->
         <script>
 
@@ -137,6 +135,10 @@ Author: Scott Henshaw
             console.log(myCoffee.cost());
 
         </script>
+=======
+        <script type="module" src='./index.js'></script> 
+        <!-- <script type="module" src='./scripts/lesson5.js'></script> -->
+>>>>>>> 09e9dfbd4f411abb914647bf30d4eaf0661cf285
         
     </body>
 
